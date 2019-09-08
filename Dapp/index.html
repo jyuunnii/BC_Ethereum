@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Simple Onepiece Game App</title>
+ <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+ <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+ <style>
+   </style>
+</head>
+<body class="row">
+ <h1 class="text-center banner">Simple Onepiece Game Application (Ropsten Testnet)</h1>
+ <div class="container">
+  <div class="row margin-top-3">
+   <div class="col-sm-12">
+    <ul>
+      <li>Contract Address : <span id="contractAddr"></span></li>
+      <p>
+      <li>Account Address : <span id="accountAddr"></span></li>
+      </p>
+      <li>Holding ETH Count : <span id="ethValue"></span></li>
+      <p></p>
+      <li>Holding Coin Count : <span id="ticketValue"></span></li>
+    </ul>
+   </div>
+  </div>
+  <div class="row margin-top-3">
+   <div class="col-sm-7">
+    <h2>Items</h2>
+    <div class="table-responsive">
+     <table class="table table-bordered">
+      <thead>
+       <tr>
+        <th>Item</th>
+        <th>FullCharge</th>
+       </tr>
+      </thead>
+      <!--tbody id="item-rows"-->
+      <tbody>
+        <tr>
+         <th>Gomugomu</th>
+         <th id="day_votes_1"></th>
+        </tr>
+        <tr>
+         <th>Igeuligeul</th>
+         <th id="day_votes_2"></th>
+        </tr>
+        <tr>
+         <th>Dongkangdongkang</th>
+         <th id="day_votes_3"></th>
+        </tr>
+        <tr>
+         <th>Susulsusul</th>
+         <th id="day_votes_4"></th>
+        </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="col-sm-offset-1 col-sm-4">
+    <h2>Counts</h2>
+    <div class="table-responsive">
+     <table class="table table-bordered">
+      <tr>
+       <th>Counts Info</th>
+       <th>Value</th>
+      </tr>
+      <tr>
+       <td>Total Count</td>
+       <td id="tickets-total"></td>
+      </tr>
+      <tr>
+       <td>Sellable Count</td>
+       <td id="tickets-sellable"></td>
+      </tr>
+      <tr>
+       <td>Price Per Count</td>
+       <td id="ticket-cost"></td>
+      </tr>
+      <tr>
+       <td>ETH In The Contract</td>
+       <td id="contract-balance"></td>
+      </tr>
+     </table>
+    </div>
+   </div>
+  </div>
+  <hr>
+  <div class="row margin-bottom-3">
+    <div class="col-sm-7 form">
+     <h2>Vote for Item!!!</h2>
+     <div id="msg"></div>
+     <input type="text" id="item" class="form-control" placeholder="Input your favorite fruit name"/>
+     <br>
+     <br>
+     <input type="text" id="vote-tickets" class="form-control" placeholder="Total no. of tickets to vote"/>
+     <br>
+     <br>
+     <a href="#" onclick="voteForItem(); return false;" class="btn btn-primary">Vote</a>
+    </div>
+    <div class="col-sm-offset-1 col-sm-4">
+     <div class="col-sm-12 form">
+      <h2>Purchase Tickets</h2>
+      <div id="buy-msg"></div>
+      <input type="text" id="buy" class="col-sm-8" placeholder="Number of tickets to buy"/>
+      <a href="#" onclick="buyTickets(); return false;" class="btn btn-primary">Buy</a>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</body>
+<script src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+<script src="index.js"></script>
+</html>
