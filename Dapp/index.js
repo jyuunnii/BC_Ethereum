@@ -52,7 +52,7 @@ let abi =
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "getSellabeTicket",
+		"name": "getSellableTicket",
 		"outputs": [
 			{
 				"name": "",
@@ -142,10 +142,10 @@ let currentEtherBalance;
 let currentTokenBalance;
 let tokenPrice;
 
-window.addEventListener('load', function() {
+window.addEventListener("load", function() {
 
   // Checking if Web3 has been injected by the browser (Mist/MetaMask)
-  if (typeof web3 !== 'undefined') {
+  if (typeof web3 !== "undefined") {
     // Use Mist/MetaMask's provider
     window.web3 = new Web3(web3.currentProvider);
   } else {
@@ -160,10 +160,10 @@ window.addEventListener('load', function() {
 function startApp() {
   simpleVoteContract = web3.eth.contract(abi);
   simpleVote = simpleVoteContract.at(contractAddress);
-  document.getElementById('contractAddr').innerHTML = getLink(contractAddress);
+  document.getElementById("contractAddr").innerHTML = getLink(contractAddress);
 
   web3.eth.getAccounts(function(e,r){
-  document.getElementById('accountAddr').innerHTML = getLink(r[0]);
+  document.getElementById("accountAddr").innerHTML = getLink(r[0]);
   accountAddress = r[0];
   getValue();
   });
@@ -182,38 +182,38 @@ function getValue() {
 
 function getEther() {
   web3.eth.getBalance(accountAddress, function(e,r){
-    document.getElementById('ethValue').innerHTML =web3.fromWei(r.toString()) + "ETH";
+    document.getElementById("ethValue").innerHTML =web3.fromWei(r.toString()) + "ETH";
   });
 }
 
 function getToken() {
-  simpleVote.getTokenBought(function(e,r){
-    document.getElementById('ticketValue').innerHTML = r.toString();
+  simpleVote.getTicketsHave(function(e,r){
+    document.getElementById("ticketValue").innerHTML = r.toString();
   });
 }
 
 function getTokenInfo() {
 
-  simpleVote.getTotalToken(function(e,r){
-    document.getElementById('tickets-total').innerHTML = r.toString();
+  simpleVote.getTotalTicket(function(e,r){
+    document.getElementById("tickets-total").innerHTML = r.toString();
   });
-  simpleVote.getBalanceTokens(function(e,r){
-    document.getElementById('tickets-sellable').innerHTML = r.toString();
+  simpleVote.getSellableTicket(function(e,r){
+    document.getElementById("tickets-sellable").innerHTML = r.toString();
   });
-  simpleVote.getTokenPrice(function(e,r){
+  simpleVote.getTicketPrice(function(e,r){
     tokenPrice = parseFloat(web3.fromWei(r.toString()));
-    document.getElementById('ticket-cost').innerHTML = tokenPrice + "ETH";
+    document.getElementById("ticket-cost").innerHTML = tokenPrice + "ETH";
   });
   web3.eth.getBalance(simpleVote.address, function(e,v) {
-    document.getElementById('contract-balance').innerHTML = web3.fromWei(v.toString()) + "ETH";
+    document.getElementById("contract-balance").innerHTML = web3.fromWei(v.toString()) + "ETH";
   });
 }
 
 function getItemInfo() {
-  simpleVote.getTicketsRecieve(function(e,r){
+  simpleVote.getTicketsReceive(function(e,r){
     for(let i=1;i<=r.length;i++)
     {
-      document.getElementById('day_votes_' + i).innerHTML = r[i-1].toString();
+      document.getElementById("day_votes_" + i).innerHTML = r[i-1].toString();
     }
   });
 }
@@ -237,7 +237,7 @@ function buyTickets() {
 
   simpleVote.buy({value: web3.toWei(price, 'ether'), from: web3.eth.accounts[0]}, function(v) {
     web3.eth.getBalance(simpleVote.address, function(e, r) {
-    $("#ticketValue").html(web3.fromWei(r.toString()) + " ETH");
+    $("#contract-balance").html(web3.fromWei(r.toString()) + " ETH");
    });
   });
 }

@@ -18,7 +18,7 @@ contract simpleVote{
         itemNames.push("Gomugomu");
         itemNames.push("Igeuliguel");
         itemNames.push("Dongkangdongkang");
-        itemNames.push("susulsusul");
+        itemNames.push("Susulsusul");
     }
 
     function buy() public payable { //metamask 와 연동 -> Payable
@@ -69,7 +69,7 @@ contract simpleVote{
     }
 
 
-    function getSellabeTicket() public view returns (uint)
+    function getSellableTicket() public view returns (uint)
     {
         return sellable_count;
     }
