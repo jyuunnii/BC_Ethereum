@@ -1,4 +1,4 @@
-pragma solidity ^0.5.10;
+pragma solidity ^0.4.24;
 
 contract simpleVote{
     mapping(address => uint) private tickets;
